@@ -1,5 +1,4 @@
 flask
 flask-cors
-optimum[onnxruntime]
-sentence-transformers
+fastembed
 gunicorn
