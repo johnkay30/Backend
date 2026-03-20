@@ -1,10 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from sentence_transformers import SentenceTransformer, util
+from fastembed import TextEmbedding  # <--- Use this instead!
+import numpy as np
 import os
 
 app = Flask(__name__)
-CORS(app) # This allows your Vercel frontend to talk to this Python backend
+CORS(app)
+
+# This tiny model (33MB) won't crash Railway or Render
+model = TextEmbedding(model_name="BAAI/bge-small-en-v1.5")
 
 # Load a lightweight, high-performance model
 model = SentenceTransformer('all-MiniLM-L6-v2')
